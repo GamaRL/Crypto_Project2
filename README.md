@@ -1,4 +1,4 @@
-<!-- # Project 02 - Post-Quantum Cryptography
+# Project 02 - Post-Quantum Cryptography
 
 > Alumno:
 > - Coria Martínez, Gustavo      - 318164838
