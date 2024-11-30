@@ -22,18 +22,13 @@ RUN ninja
 RUN ninja install
 
 # Running algorithms' tests
-COPY ./src /app
-COPY ./random_strings.txt /app/random_strings.txt
-COPY ./get_metrics.sh /app/get_metrics.sh
-COPY ./format_metrics.sh /app/format_metrics.sh
-COPY ./get_plots.gp /app/get_plots.gp
-COPY ./get_columns.gp /app/get_columns.gp
-COPY ./get_columns2.gp /app/get_columns2.gp
+COPY ./src /app/src
+COPY ./scripts /app/scripts
 WORKDIR /app
 
 # Compiling
-RUN gcc sig_metrics.c -o sig_metrics -loqs -lcrypto -lssl
-RUN gcc kem_metrics.c -o kem_metrics -loqs -lcrypto -lssl
+RUN gcc src/sig_metrics.c -o sig_metrics -loqs -lcrypto -lssl
+RUN gcc src/kem_metrics.c -o kem_metrics -loqs -lcrypto -lssl
 
 # Set a default command (optional)
-CMD ["./get_metrics.sh"]
+CMD ["/app/scripts/get_metrics.sh"]

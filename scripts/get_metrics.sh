@@ -1,4 +1,8 @@
-rm out/*
+#!/bin/bash
+
+rm -f out/*
+
+./scripts/generate_random_strings.sh
 
 echo "Testing Dilithium2..."
 ./sig_metrics "Dilithium2" < random_strings.txt > out/dilithium_2.csv
@@ -20,7 +24,7 @@ echo "Testing SPHINCS+-SHAKE-256s-simple..."
 echo "Testing SPHINCS+-SHAKE-256f-simple..."
 ./sig_metrics "SPHINCS+-SHAKE-256f-simple" < random_strings.txt > out/sphincs_256f.csv
 
-./format_metrics.sh
+./scripts/format_metric_files.sh
 
 echo "Testing ML-KEM-512..."
 ./kem_metrics "ML-KEM-512" > out/kem.csv
@@ -31,16 +35,16 @@ echo "Testing ML-KEM-1024..."
 
 
 echo "Generating plots..."
-ALGORITHM='dilithium_2' gnuplot get_plots.gp
-ALGORITHM='dilithium_3' gnuplot get_plots.gp
-ALGORITHM='dilithium_5' gnuplot get_plots.gp
-ALGORITHM='sphincs_128s' gnuplot get_plots.gp
-ALGORITHM='sphincs_128f' gnuplot get_plots.gp
-ALGORITHM='sphincs_192s' gnuplot get_plots.gp
-ALGORITHM='sphincs_192f' gnuplot get_plots.gp
-ALGORITHM='sphincs_256s' gnuplot get_plots.gp
-ALGORITHM='sphincs_256f' gnuplot get_plots.gp
+ALGORITHM='dilithium_2' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='dilithium_3' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='dilithium_5' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_128s' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_128f' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_192s' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_192f' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_256s' gnuplot scripts/plots/get_plots.gp
+ALGORITHM='sphincs_256f' gnuplot scripts/plots/get_plots.gp
 
 
-gnuplot get_columns.gp
-gnuplot get_columns2.gp
+gnuplot scripts/plots/get_kem_plot.gp
+gnuplot scripts/plots/get_sig_key_time_plot.gp

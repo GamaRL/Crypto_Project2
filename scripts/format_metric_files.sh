@@ -3,9 +3,6 @@
 # File to store key generation times
 output_file="out/key_generation_times.csv"
 
-# Clear the output file
-rm "$output_file"
-
 # Loop through all the files in the current directory
 for file in out/*.csv; do
   # Check if the file is a regular file
