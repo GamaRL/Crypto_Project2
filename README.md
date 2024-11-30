@@ -1,6 +1,6 @@
 # Project 02 - Post-Quantum Cryptography
 
-> Alumno:
+> Alumnos:
 > - Coria Martínez, Gustavo      - 318164838
 > - García Lemus, Rocío			     - 318263254
 > - Morales Zilli, Luis Fernando - 421085620
